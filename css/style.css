@@ -2,6 +2,20 @@
   height: 50vh;
 }
 
+.biggerSize {
+  font-size: 1.5rem;
+}
+
+.img-fluid {
+  object-fit: cover;
+}
+
+.img-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 #carousel1 {
   background: no-repeat center url("../images/1.jpg");
 }
@@ -12,4 +26,9 @@
 
 #carousel3 {
   background: no-repeat center url("../images/3.jpg");
+}
+
+#section3 {
+  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), no-repeat center url("../images/4.jpg");
+  background-attachment: fixed;
 }
