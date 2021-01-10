@@ -1,0 +1,15 @@
+.carousel-item {
+  height: 50vh;
+}
+
+#carousel1 {
+  background: no-repeat center url("../images/1.jpg");
+}
+
+#carousel2 {
+  background: no-repeat center url("../images/2.jpg");
+}
+
+#carousel3 {
+  background: no-repeat center url("../images/3.jpg");
+}
