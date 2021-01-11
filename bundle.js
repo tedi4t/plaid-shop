@@ -3,6 +3,7 @@
 
 const selector = document.getElementById('sizeSelector');
 const orderPriceElement = document.getElementById('orderPrice');
+const selectedPicture = document.getElementById('selectedPicture');
 
 const sizes = [
   '60x70', '75x80', '70x85', '80x80', '80x100', '90x90', 
@@ -86,6 +87,14 @@ function handleColorElementClick(fileName, element) {
 
   prevActiveColor = element;
   selectedColor = fileName;
+
+  console.log(defaultSelectedPictureSource + fileName);
+
+  if (selectImages.includes(fileName)) {
+    selectedPicture.src = defaultSelectedPictureSource + fileName;
+  } else {
+    selectedPicture.src = defaultSelectedPictureSource + selectImages[0];
+  }
 }
 
 colorImages.forEach((fileName, index) => {
@@ -99,4 +108,10 @@ orderForm.onsubmit = e => {
   e.preventDefault();
   console.log({ selectedColor, selectedSizeInd, orderPrice });
 }
+
+// IMAGE FROM FORM ORDER
+const defaultSelectedPictureSource = './images/orderPictures/';
+const selectImages = ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg"];
+console.log(selectImages);
+selectedPicture.src = defaultSelectedPictureSource + selectImages[0];
 },{}]},{},[1]);
