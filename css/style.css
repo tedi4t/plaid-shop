@@ -22,6 +22,15 @@
   grid-gap: 10px;
 }
 
+.image-card {
+  margin-top: -60px;
+}
+
+#responses .card:hover {
+  background: #3292a6;
+  color: #fff;
+}
+
 #carousel1 {
   background: no-repeat center url("../images/1.jpg");
 }
