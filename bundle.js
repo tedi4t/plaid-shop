@@ -60,7 +60,7 @@ selector.onchange = (e) => {
 const defaultColorSource = './images/colors/';
 const colors = document.getElementById('colors');
 
-const colorImages = ["alize_puffy_111-200x200_0.jpg","alize_puffy_16-200x200_0.jpg","alize_puffy_179-200x200_0.jpg","alize_puffy_2-200x200_0.jpg","alize_puffy_28-200x200_0.jpg","alize_puffy_321-200x200_0.jpg"];
+const colorImages = ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"];
 selectedColor = colorImages[0];
 
 function generateColorItemHTML(fileName, index) {
