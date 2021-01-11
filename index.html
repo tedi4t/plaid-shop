@@ -76,7 +76,37 @@
       
       </section>
     </div>
-    
+
+     <!-- FORM -->
+    <form class="container" id="orderForm">
+      <div class="row">
+        <div class="col-md-6 col-sm-12" id="selectedPicture">
+
+        </div>
+        <div class="col-md-6 col-sm-12">
+          <div class="form-group">
+            <label for="sizeSelector">Оберіть розмір</label>
+            <select class="form-control" id="sizeSelector">
+
+            </select>
+          </div>
+          <div class="form-group mb-0">
+            <label for="colorSelector">Оберіть колір</label>
+            <div id = "colors" class="colors-block">
+
+            </div>
+          </div>
+            <div class="text-right my-4 text-right" style="font-size: 1.2rem;">
+              Ціна: <span id="orderPrice"></span> гривень
+            </div>
+          <button 
+            class="btn btn-block btn-warning"
+            type="submit"
+          >Оформити замовлення</button>
+        </div>
+        
+      </div>
+    </form>
 
     <section style="height: 100vh;"></section>
 

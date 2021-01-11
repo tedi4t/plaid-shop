@@ -16,6 +16,12 @@
   object-fit: cover;
 }
 
+.colors-block {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(50px, 1fr));
+  grid-gap: 10px;
+}
+
 #carousel1 {
   background: no-repeat center url("../images/1.jpg");
 }
