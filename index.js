@@ -1,4 +1,6 @@
 const fs = require('fs');
+const axios = require('axios');
+const colors = require('./colors.json');
 
 const selector = document.getElementById('sizeSelector');
 const orderPriceElement = document.getElementById('orderPrice');
@@ -26,7 +28,6 @@ const defaultSource = './images/gallery/';
 const gallery = document.getElementById('gallery');
 
 function generateGalleryItemHTML(fileName, lastElement) {
-  console.log(lastElement);
   return `
     <div class="col-lg-4 col-md-6 col-sm-12 p-2 w-100 d-block ${lastElement ? 'd-md-none d-lg-block' : ''}">
       <img src="${defaultSource + fileName}" class="img-cover">
@@ -58,22 +59,33 @@ selector.onchange = (e) => {
 }
 
 // CODE FOR SETTING COLORS
-const defaultColorSource = './images/colors/';
-const colors = document.getElementById('colors');
+// const defaultColorSource = './images/colors/';
+// const colors = document.getElementById('colors');
 
-const colorImages = fs.readdirSync('./images/colors');
-selectedColor = colorImages[0];
+// const colorImages = fs.readdirSync('./images/colors');
+// selectedColor = colorImages[0];
 
-function generateColorItemHTML(fileName, index) {
+// console.log(colorImages);
+
+// const colorsHTML = colorImages.map((file, index) => generateColorItemHTML(file, index)).join('\n');
+// colors.innerHTML = colorsHTML;
+
+function generateColorItemHTML(fileName, color, index) {
+  if (!color) return;
   return `
     <div class="border rounded ${fileName === selectedColor ? 'border-warning' : 'border-muted'} p-1 " id="color${index}">
-      <img src="${defaultColorSource + fileName}" class="img-cover">
+      <div style = "height: 20px; background: ${color}">
+      </div>
     </div>
   `
 }
 
-const colorsHTML = colorImages.map((file, index) => generateColorItemHTML(file, index)).join('\n');
-colors.innerHTML = colorsHTML;
+const colorsElement = document.getElementById('colors');
+const orderPictures = fs.readdirSync('./images/orderPictures');
+selectedColor = orderPictures[0];
+const colorsHTML = orderPictures.map((file, index) => generateColorItemHTML(file, colors[file], index)).join('\n');
+console.log(colorsHTML);
+colorsElement.innerHTML = colorsHTML;
 
 // ADD EVENT LISTENERS FOR COLOR ELEMETNS
 let prevActiveColor = document.getElementById(`color0`);
@@ -88,8 +100,6 @@ function handleColorElementClick(fileName, element) {
   prevActiveColor = element;
   selectedColor = fileName;
 
-  console.log(defaultSelectedPictureSource + fileName);
-
   if (selectImages.includes(fileName)) {
     selectedPicture.src = defaultSelectedPictureSource + fileName;
   } else {
@@ -97,9 +107,15 @@ function handleColorElementClick(fileName, element) {
   }
 }
 
-colorImages.forEach((fileName, index) => {
+// colorImages.forEach((fileName, index) => {
+//   const colorElement = document.getElementById(`color${index}`);
+//   colorElement.addEventListener('click', () => handleColorElementClick(fileName, colorElement));
+// })
+
+orderPictures.forEach((fileName, index) => {
   const colorElement = document.getElementById(`color${index}`);
-  colorElement.addEventListener('click', () => handleColorElementClick(fileName, colorElement));
+  if (colorElement)
+    colorElement.addEventListener('click', () => handleColorElementClick(fileName, colorElement));
 })
 
 // HANDLE SUBMIT FORM
@@ -112,5 +128,4 @@ orderForm.onsubmit = e => {
 // IMAGE FROM FORM ORDER
 const defaultSelectedPictureSource = './images/orderPictures/';
 const selectImages = fs.readdirSync('./images/orderPictures');
-console.log(selectImages);
 selectedPicture.src = defaultSelectedPictureSource + selectImages[0];
