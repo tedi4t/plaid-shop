@@ -26,9 +26,10 @@ orderPriceElement.innerHTML = orderPrice;
 const defaultSource = './images/gallery/';
 const gallery = document.getElementById('gallery');
 
-function generateGalleryItemHTML(fileName) {
+function generateGalleryItemHTML(fileName, lastElement) {
+  console.log(lastElement);
   return `
-    <div class="col-lg-4 col-md-6 col-sm-12 p-2 w-100">
+    <div class="col-lg-4 col-md-6 col-sm-12 p-2 w-100 d-block ${lastElement ? 'd-md-none d-lg-block' : ''}">
       <img src="${defaultSource + fileName}" class="img-cover">
     </div>
   `
@@ -36,7 +37,7 @@ function generateGalleryItemHTML(fileName) {
 
 const galleryImages = ["3 нова.jpg","IMG_3250.JPG","IMG_3251.JPG","IMG_3254.JPG","IMG_3255.JPG","IMG_3263.JPG","IMG_3278.JPG","IMG_3374.JPG","IMG_3375.JPG"];
 
-const imagesHTML = galleryImages.map(file => generateGalleryItemHTML(file)).join('\n');
+const imagesHTML = galleryImages.map((file, index) => generateGalleryItemHTML(file, galleryImages.length === index + 1)).join('\n');
 gallery.innerHTML = imagesHTML;
 
 // CODE FOR SETTING SIZE SELECTOR OPTIONS

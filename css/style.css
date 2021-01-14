@@ -1,5 +1,5 @@
 .carousel-item {
-  height: 50vh;
+  height: 60vh;
 }
 
 .biggerSize {
@@ -26,24 +26,30 @@
   margin-top: -60px;
 }
 
+.features-icon {
+  height: 90px;
+}
+
 #responses .card:hover {
   background: #3292a6;
   color: #fff;
 }
 
 #carousel1 {
-  background: no-repeat center url("../images/1.jpg");
+  background: no-repeat url("../images/carousel/1.jpg");
 }
 
 #carousel2 {
-  background: no-repeat center url("../images/2.jpg");
+  background: no-repeat url("../images/carousel/2.jpg");
+  background-size: cover;
 }
 
 #carousel3 {
-  background: no-repeat center url("../images/3.jpg");
+  background: no-repeat url("../images/carousel/3.jpg");
 }
 
 #section3 {
-  background: linear-gradient(rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0.7)), no-repeat center url("../images/4.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.6)), no-repeat center url("../images/background/1.jpg");
   background-attachment: fixed;
+  background-size: cover;
 }
