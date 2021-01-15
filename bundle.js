@@ -1,11 +1,39 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 module.exports={   
-  "55.jpg" : "#ffc456",
-  "56.jpg" : "#c17aa0",
-  "98.jpg" : "#f3f3f3",
-  "149.jpg" : "#aaa",
-  "340.jpg" : "#bbb",
-  "529.jpg" : "#ccc"
+  "13.jpg": "#e3dfb3",
+  "15.jpg": "#e8ebea",
+  "16.jpg": "#bbd9f1",
+  "19.jpg": "#b5d4c9",
+  "27.jpg": "#d7cbdd",
+  "28.jpg": "#9e7885",
+  "41.jpg": "#cadba1",
+  "60.jpg": "#222124",
+  "62.jpg": "#eae5d9",
+  "87.jpg": "#868688",
+  "111.jpg": "#623154",
+  "141.jpg": "#474da4",
+  "146.jpg": "#e9e2ef",
+  "179.jpg": "#a87a57",
+  "183.jpg": "#d4e2fd",
+  "216.jpg": "#f3e7a7",
+  "262.jpg": "#c6b5a2",
+  "289.jpg": "#a7c8ef",
+  "360.jpg": "#383e7e",
+  "374.jpg": "#6a7795",
+  "416.jpg": "#dad9de",
+  "428.jpg": "#b2b9c4",
+  "485.jpg": "#b2b990",
+  "490.jpg": "#9fc2b2",
+  "509.jpg": "#f7e0ac",
+  "535.jpg": "#bab4b2",
+  "619.jpg": "#d28f84",
+  "646.jpg": "#7193c0",
+  "55.jpg": "#eeeae9",
+  "149.jpg": "#c85a75",
+  "529.jpg": "#e7bebc",
+  "340.jpg": "#e2b2b0",
+  "56.jpg": "#d23b42",
+  "98.jpg": "#c299b7"
 }
 },{}],2:[function(require,module,exports){
 
@@ -91,16 +119,16 @@ function generateColorItemHTML(fileName, color, index) {
 }
 
 const colorsElement = document.getElementById('colors');
-const orderPictures = ["149.jpg","340.jpg","529.jpg","55.jpg","56.jpg","98.jpg"];
+const orderPictures = ["111.jpg","13.jpg","141.jpg","146.jpg","149.jpg","15.jpg","16.jpg","179.jpg","183.jpg","19.jpg","216.jpg","262.jpg","27.jpg","28.jpg","289.jpg","340.jpg","360.jpg","374.jpg","41.jpg","416.jpg","428.jpg","485.jpg","490.jpg","509.jpg","529.jpg","535.jpg","55.jpg","56.jpg","60.jpg","619.jpg","62.jpg","646.jpg","87.jpg","98.jpg"];
 selectedColor = orderPictures[0];
 const colorsHTML = orderPictures.map((file, index) => generateColorItemHTML(file, colors[file], index)).join('\n');
-console.log(colorsHTML);
 colorsElement.innerHTML = colorsHTML;
 
 // ADD EVENT LISTENERS FOR COLOR ELEMETNS
 let prevActiveColor = document.getElementById(`color0`);
 
 function handleColorElementClick(fileName, element) {
+  console.log(fileName);
   prevActiveColor.classList.remove('border-warning');
   prevActiveColor.classList.add('border-muted');
 
@@ -137,7 +165,7 @@ orderForm.onsubmit = e => {
 
 // IMAGE FROM FORM ORDER
 const defaultSelectedPictureSource = './images/orderPictures/';
-const selectImages = ["149.jpg","340.jpg","529.jpg","55.jpg","56.jpg","98.jpg"];
+const selectImages = ["111.jpg","13.jpg","141.jpg","146.jpg","149.jpg","15.jpg","16.jpg","179.jpg","183.jpg","19.jpg","216.jpg","262.jpg","27.jpg","28.jpg","289.jpg","340.jpg","360.jpg","374.jpg","41.jpg","416.jpg","428.jpg","485.jpg","490.jpg","509.jpg","529.jpg","535.jpg","55.jpg","56.jpg","60.jpg","619.jpg","62.jpg","646.jpg","87.jpg","98.jpg"];
 selectedPicture.src = defaultSelectedPictureSource + selectImages[0];
 },{"./colors.json":1,"axios":3}],3:[function(require,module,exports){
 module.exports = require('./lib/axios');

@@ -84,13 +84,13 @@ const colorsElement = document.getElementById('colors');
 const orderPictures = fs.readdirSync('./images/orderPictures');
 selectedColor = orderPictures[0];
 const colorsHTML = orderPictures.map((file, index) => generateColorItemHTML(file, colors[file], index)).join('\n');
-console.log(colorsHTML);
 colorsElement.innerHTML = colorsHTML;
 
 // ADD EVENT LISTENERS FOR COLOR ELEMETNS
 let prevActiveColor = document.getElementById(`color0`);
 
 function handleColorElementClick(fileName, element) {
+  console.log(fileName);
   prevActiveColor.classList.remove('border-warning');
   prevActiveColor.classList.add('border-muted');
 
