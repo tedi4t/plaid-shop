@@ -35,6 +35,11 @@
   background: #fff;
 }
 
+footer {
+  background: #3292a6;
+  box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.5);
+}
+
 #responses .card:hover {
   background: #3292a6;
   color: #fff;
