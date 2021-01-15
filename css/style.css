@@ -30,6 +30,11 @@
   height: 90px;
 }
 
+.navbar {
+  box-shadow: 2px 2px 5px #3292a6;
+  background: #fff;
+}
+
 #responses .card:hover {
   background: #3292a6;
   color: #fff;
