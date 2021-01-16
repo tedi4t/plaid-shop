@@ -29,7 +29,7 @@ const gallery = document.getElementById('gallery');
 
 function generateGalleryItemHTML(fileName, index, lastElement) {
   return `
-    <div class="col-lg-4 col-md-6 col-sm-12 p-2 w-100 ${index >= 3 ? 'd-sm-none d-md-block' : 'd-block'} ${lastElement ? 'd-md-none d-lg-block' : ''}">
+    <div class="col-lg-4 col-md-6 col-sm-12 p-2 w-100 ${index >= 3 ? 'd-none d-md-block' : 'd-block'} ${lastElement ? 'd-md-none d-lg-block' : ''}">
       <img src="${defaultSource + fileName}" class="img-cover">
     </div>
   `
