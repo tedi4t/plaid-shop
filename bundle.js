@@ -128,7 +128,6 @@ colorsElement.innerHTML = colorsHTML;
 let prevActiveColor = document.getElementById(`color0`);
 
 function handleColorElementClick(fileName, element) {
-  console.log(fileName);
   prevActiveColor.classList.remove('border-warning');
   prevActiveColor.classList.add('border-muted');
 
@@ -167,6 +166,20 @@ orderForm.onsubmit = e => {
 const defaultSelectedPictureSource = './images/orderPictures/';
 const selectImages = ["111.jpg","13.jpg","141.jpg","146.jpg","149.jpg","15.jpg","16.jpg","179.jpg","183.jpg","19.jpg","216.jpg","262.jpg","27.jpg","28.jpg","289.jpg","340.jpg","360.jpg","374.jpg","41.jpg","416.jpg","428.jpg","485.jpg","490.jpg","509.jpg","529.jpg","535.jpg","55.jpg","56.jpg","60.jpg","619.jpg","62.jpg","646.jpg","87.jpg","98.jpg"];
 selectedPicture.src = defaultSelectedPictureSource + selectImages[0];
+
+// HANDLE QUESTION FORM
+const questionForm = document.getElementById('questionForm');
+const questionText = document.getElementById('questionText');
+const questionContact = document.getElementById('questionContact');
+let questionTextValue;
+let questionContactValue;
+questionText.onchange = e => questionTextValue = e.target.value;
+questionContact.onchange = e => questionContactValue = e.target.value;
+
+questionForm.onsubmit = e => {
+  e.preventDefault();
+  console.log({ questionTextValue, questionContactValue });
+}
 },{"./colors.json":1,"axios":3}],3:[function(require,module,exports){
 module.exports = require('./lib/axios');
 },{"./lib/axios":5}],4:[function(require,module,exports){

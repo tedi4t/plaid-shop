@@ -32,6 +32,9 @@
             <a href="#responses" class="nav-link">Відгуки</a>
           </li>
           <li class="nav-item">
+            <a href="#questionForm" class="nav-link">Спитати</a>
+          </li>
+          <li class="nav-item">
             <a href="#orderForm" class="nav-link">Замовити</a>
           </li>
         </ul>
@@ -230,6 +233,45 @@
       <hr>
     </div>
 
+    <section id="questionForm" class="mb-5">
+      <div class="container">
+        <div class="display-4 text-center pt-4 pb-5">Маєте запитання, напишіть нам!</div>
+        <form>
+          <textarea 
+            placeholder="Ваше запитання"
+            name="question" 
+            id="questionText"
+            rows="6" 
+            class="form-group form-control" 
+          ></textarea>
+          <input 
+            type="text" 
+            class="form-group form-control" 
+            placeholder="Як ми можемо з Вами зв'язатися? Наприклад: телефон 05000033322 або telegram @username"
+            id="questionContact"
+          >
+          <button class="btn btn-lg btn-block btn-primary">Задати запитання</button>
+        </form>
+      </div>      
+    </section>
+      
+    <section class="row w-100 mx-0" id = "section5">
+      <!-- <div class="darked-background"> -->
+        <div class="container">
+          <div class="text-white text-center my-4">
+              <div class="col">
+                  <h1 class="display-4">
+                    Турбота в кожному дотику 👐
+                  </h1>
+                  <p class="biggerSize">
+                    Для солодкого сну і відпочинку
+                  </p>
+              </div>
+          </div>
+        </div>
+      <!-- </div> -->
+    </section>
+
      <!-- FORM -->
     <section id="orderForm">
       <h3 class="display-4 text-center py-5">Виберіть найкраще для себе</h3>
@@ -263,7 +305,8 @@
       </form>
     </section>
 
-    <footer id = "footer" class="mt-5 py-4">
+    <!-- Footer -->
+    <footer id = "footer" class="mt-5 py-4 bg-primary">
       <div class="container">
         <div class="row">
           <div class="col-md-4 col-sm-12 text-center">

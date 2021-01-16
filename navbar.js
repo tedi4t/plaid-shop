@@ -21,7 +21,6 @@ $(document).scroll(function() {
 
 // get target position and scrolls to it
 function scrollToSection(self) {
-  console.log('scrolling...');
   // get the target href
   var href = $(self).attr('href');
 
@@ -70,10 +69,8 @@ function activateCurrentSection() {
   }
 
   if (lastSectionTooSmall && lastSectionInView) {
-    console.log('condition1');
     id = $(lastSection).attr('id');
   } else {  // else last section is >= 100% of the view check all sections to find the top one
-    console.log('condition2', typeof sections);
 
     sections.each(function() {
       var top = $(this).offset().top - navHeight; // get the top & bottom position of the section
@@ -85,7 +82,6 @@ function activateCurrentSection() {
       * it is the active section.
       */
       if (pos >= top && pos <= bottom) {
-    console.log('condition3');
     id = $(this).attr('id');       // store the id of this section
       }
     });
@@ -94,7 +90,6 @@ function activateCurrentSection() {
   /*
    if an id was set before, activate the section in the nav
    */
-  console.log({ id });
   if (id) {
     nav.find('a').removeClass('active');
     nav.find('a[href="#' + id + '"]').addClass('active');

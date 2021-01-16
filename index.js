@@ -90,7 +90,6 @@ colorsElement.innerHTML = colorsHTML;
 let prevActiveColor = document.getElementById(`color0`);
 
 function handleColorElementClick(fileName, element) {
-  console.log(fileName);
   prevActiveColor.classList.remove('border-warning');
   prevActiveColor.classList.add('border-muted');
 
@@ -129,3 +128,17 @@ orderForm.onsubmit = e => {
 const defaultSelectedPictureSource = './images/orderPictures/';
 const selectImages = fs.readdirSync('./images/orderPictures');
 selectedPicture.src = defaultSelectedPictureSource + selectImages[0];
+
+// HANDLE QUESTION FORM
+const questionForm = document.getElementById('questionForm');
+const questionText = document.getElementById('questionText');
+const questionContact = document.getElementById('questionContact');
+let questionTextValue;
+let questionContactValue;
+questionText.onchange = e => questionTextValue = e.target.value;
+questionContact.onchange = e => questionContactValue = e.target.value;
+
+questionForm.onsubmit = e => {
+  e.preventDefault();
+  console.log({ questionTextValue, questionContactValue });
+}
