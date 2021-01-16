@@ -71,12 +71,24 @@ footer {
 
 #section3, #section4, #section5 {
   background-size: cover;
-  -webkit-background-attachment: fixed;
-  -moz-background-attachment: fixed;
-  -o-background-attachment: fixed;
   background-attachment: fixed;
+  background-position: center center;
 }
 
+@media only screen and (max-width: 768px) {
+  .display-4 {
+    font-size: 1.9rem;
+    margin-bottom: 0;
+  }
+
+  .biggerSize {
+    font-size: 1.2rem;
+  }
+
+  #section3, #section4, #section5 {
+    background-attachment: scroll;
+  }
+}
 @media only screen and (max-width: 576px) {
   .display-4 {
     font-size: 1.5rem;
@@ -89,15 +101,5 @@ footer {
 
   .colors-block {
     grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
-  }
-}
-@media only screen and (max-width: 768px) {
-  .display-4 {
-    font-size: 1.9rem;
-    margin-bottom: 0;
-  }
-
-  .biggerSize {
-    font-size: 1.2rem;
   }
 }
