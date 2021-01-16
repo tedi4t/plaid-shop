@@ -84,6 +84,10 @@ footer {
   .biggerSize {
     font-size: 1rem;
   }
+
+  .colors-block {
+    grid-template-columns: repeat(auto-fit, minmax(45px, 1fr));
+  }
 }
 @media only screen and (max-width: 768px) {
   .display-4 {
