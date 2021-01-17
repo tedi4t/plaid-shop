@@ -35,61 +35,62 @@
             <a href="#orderForm" class="nav-link">Замовити</a>
           </li>
           <li class="nav-item">
-            <a href="#questionForm" class="nav-link">Спитати</a>
+            <a href="#questionForm" class="nav-link">Запитати</a>
           </li>
         </ul>
       </div>
       </div>
     </nav>
 
-    <!-- CAROUSEL -->
-    <section class="w-100" id="home">
-      <div id="carouselId" class="carousel slide" data-ride="carousel">
-        <ol class="carousel-indicators">
-          <li data-target="#carouselId" data-slide-to="0" class="active"></li>
-          <li data-target="#carouselId" data-slide-to="1"></li>
-          <li data-target="#carouselId" data-slide-to="2"></li>
-        </ol>
-        <div class="carousel-inner" role="listbox">
-          <div class="carousel-item active" id = "carousel1">
-            <div class="carousel-caption d-none d-md-block">
-              <h3>Title</h3>
-              <p>Description</p>
+    <section id="home" class="mt-5">
+      <!-- CAROUSEL -->
+      <div class="w-100 d-none d-md-block">
+        <div id="carouselId" class="carousel slide" data-ride="carousel">
+          <ol class="carousel-indicators">
+            <li data-target="#carouselId" data-slide-to="0" class="active"></li>
+            <li data-target="#carouselId" data-slide-to="1"></li>
+            <li data-target="#carouselId" data-slide-to="2"></li>
+          </ol>
+          <div class="carousel-inner" role="listbox">
+            <div class="carousel-item active" id = "carousel1">
+              <!-- <div class="carousel-caption d-none d-md-block">
+                <h3>Title</h3>
+                <p>Description</p>
+              </div> -->
+            </div>
+            <div class="carousel-item" id = "carousel2">
+            </div>
+            <div class="carousel-item" id = "carousel3">
             </div>
           </div>
-          <div class="carousel-item" id = "carousel2">
-            <div class="carousel-caption d-none d-md-block">
-              <h3>Title</h3>
-              <p>Description</p>
-            </div>
-          </div>
-          <div class="carousel-item" id = "carousel3">
-            <div class="carousel-caption d-none d-md-block">
-              <h3>Title</h3>
-              <p>Description</p>
-            </div>
-          </div>
+          <a class="carousel-control-prev" href="#carouselId" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+          </a>
+          <a class="carousel-control-next" href="#carouselId" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+          </a>
         </div>
-        <a class="carousel-control-prev" href="#carouselId" role="button" data-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="sr-only">Previous</span>
-        </a>
-        <a class="carousel-control-next" href="#carouselId" role="button" data-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="sr-only">Next</span>
-        </a>
+      </div>
+
+      <!-- IMAGE INSTEAD OF CAROUSEL FOR SMALL DEVICES -->
+      <div class="small-devices-image d-md-none">
+        <!-- <img src="./images/carousel/1.jpg" alt="" class="small-devices-image"> -->
       </div>
     </section>
+    
 
     <!-- TEXT BLOCK -->
     <section class="display-4 py-3 py-sm-4 py-md-5 container text-center">
-      Ніжні плюшеві пледи - гіпоалергенні по відношенню до малюків, практичні і зручні для мам🤰🏽
+      М'які затишні пледи для будинку і дачі, для дітей та дорослих, для чоловіків й жінок. 
+      Для солодкого сну та відпочинку.
     </section>
 
     <section class="row w-100 mx-0" id = "section3">
       <!-- <div class="darked-background"> -->
         <div class="container">
-          <div class="text-white text-center my-2 my-sm-3 my-md-4">
+          <div class="text-white text-center my-3 my-md-4">
               <div class="col">
                   <h1 class="display-4">
                     Твоя студія домашнього комфорту 🌱
@@ -120,16 +121,50 @@
       <h4 class="display-4 py-3 py-sm-4 py-md-5 text-center">
         Ваш комфорт у наших руках
       </h4>
-      <div class="row">
+      <div id="smallDevicesSection" class="d-md-none">
+        <div class="row">
+          <div class="col-md-4 col-sm-12 text-center">
+            <!-- <i class="fas fa-cog"></i> -->
+            <img
+              src="./images/icons/1.jpg"
+              class="features-icon mb-2 mb-sm-3"
+            >
+            <h2 class="font-weight-light">Матеріал</h2>
+            <p>
+              Гіпоалергенна пряжа Alize Puffy, до складу якої входить 100 % мікрополіестер. На дотик вона дуже м'яка і повітряна. Підійде для в'язання дитячих одіялок, пледів, різних іграшок і аксесуарів
+            </p>
+          </div>
+          <div class="col-md-4 col-sm-12 text-center">
+            <!-- <i class="fas fa-cloud"></i> -->
+            <img
+              src="./images/icons/2.png"
+              class="features-icon mb-2 mb-sm-3"
+            >
+            <h2 class="font-weight-light">Розмір</h2>
+            <p>
+              Пледи під замовлення. Колір та розмір обираєте самостійно, палітру та розмірну сітку можете знайти нижче на сайті
+            </p>
+          </div>
+          <div class="col-md-4 col-sm-12 text-center">
+            <!-- <i class="fas fa-cart-plus"></i> -->
+            <div class="mb-1 mb-2 mb-sm-3">
+              <i class="far fa-6x fa-clock"></i>
+            </div>
+            <h2 class="font-weight-light">Термін виконання</h2>
+            <p>
+              Ми плетемо індивідуально, ручна робота, 5-7 робочих днів(залежить від розміра пледу). Можливе виконання швидше за домовленістю.
+            </p>
+          </div>
+        </div>
+      </div>
+      <div id="biggerDevicesSection" class="d-none d-md-block">
+        <div class="row">
           <div class="col-md-4 col-sm-12 text-center">
               <!-- <i class="fas fa-cog"></i> -->
               <img
                 src="./images/icons/1.jpg"
                 class="features-icon mb-1 mb-md-4 mb-sm-2"
               >
-              <h2>Матеріал</h2>
-              <p>Mollit nulla incididunt reprehenderit amet nostrud fugiat irure laboris. Veniam id proident deserunt
-                  ea sit cupidatat do aliqua.</p>
           </div>
           <div class="col-md-4 col-sm-12 text-center">
               <!-- <i class="fas fa-cloud"></i> -->
@@ -137,27 +172,42 @@
                 src="./images/icons/2.png"
                 class="features-icon mb-1 mb-md-4 mb-sm-2"
               >
-              <h2>Розмір</h2>
-              <p>Mollit nulla incididunt reprehenderit amet nostrud fugiat irure laboris. Veniam id proident deserunt
-                  ea sit cupidatat do aliqua.</p>
           </div>
           <div class="col-md-4 col-sm-12 text-center">
               <!-- <i class="fas fa-cart-plus"></i> -->
-              <img
-                src="./images/icons/3.svg"
-                class="features-icon mb-1 mb-md-4 mb-sm-2"
-              >
-              <h2>Якість</h2>
-              <p>Mollit nulla incididunt reprehenderit amet nostrud fugiat irure laboris. Veniam id proident deserunt
-                  ea sit cupidatat do aliqua.</p>
+              <div class="mb-1 mb-md-4 mb-sm-2">
+                <i class="far fa-6x fa-clock"></i>
+              </div>
           </div>
+        </div>
+        <div class="row">
+          <div class="col-md-4 col-sm-12 text-center mb-1 md-sm-2 mb-md-3">
+              <h2 class="font-weight-light">Матеріал</h2>
+              <p>
+                Гіпоалергеннв пряжа Alize Puffy, до складу якої входить 100 % мікрополіестер. На дотик вона дуже м'яка і повітряна. Підійде для в'язання дитячих одіялок, пледів, різних іграшок і аксесуарів
+              </p>
+          </div>
+          <div class="col-md-4 col-sm-12 text-center">
+              <h2 class="font-weight-light">Розмір</h2>
+              <p>
+                Пледи під замовлення. Колір та розмір обираєте самостійно, палітру та розмірну сітку можете знайти нижче на сайті
+              </p>
+          </div>
+          <div class="col-md-4 col-sm-12 text-center">
+              <h2 class="font-weight-light">Термін виконання</h2>
+              <p>
+                Ми плетемо індивідуально, ручна робота, 5-7 робочих днів(залежить від розміра пледу). Можливе виконання швидше за домовленістю
+              </p>
+          </div>
+        </div>
       </div>
+      
     </section>
 
     <section class="row w-100 mx-0" id = "section4">
       <!-- <div class="darked-background"> -->
         <div class="container">
-          <div class="text-white text-center my-4">
+          <div class="text-white text-center my-3 my-md-4">
               <div class="col">
                   <h1 class="display-4">
                     Вибери свій власний колір 🎨
@@ -181,10 +231,10 @@
           <div class="col-lg-3 col-lg-6 col-sm-12 mt-5 mb-3">
             <div class="card w-100">
               <div class="card-body text-center image-card">
-                <img class="w-25 rounded-circle mb-3" src="./images/people/person1.jpg" alt="Card image">
-                <h3 class="card-title font-weight-light">Title</h3>
+                <img class="w-25 rounded-circle mb-3" src="./images/people/person4.jpg" alt="Card image">
+                <h3 class="card-title font-weight-light">Марія</h3>
                 <p class="card-text">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro, minima modi! Vitae eos magni sapiente perspiciatis, velit dolores dicta sunt. Perferendis quod voluptatibus nemo iste.
+                  Замовляла плед як накидку на диван та крісла. Сплели швидко та якісно. Задоволена роботою на всі 100%.
                 </p>
               </div>
             </div>
@@ -193,9 +243,9 @@
             <div class="card w-100">
               <div class="card-body text-center image-card">
                 <img class="w-25 rounded-circle mb-3" src="./images/people/person2.jpg" alt="Card image">
-                <h3 class="card-title font-weight-light">Title</h3>
+                <h3 class="card-title font-weight-light">Діана</h3>
                 <p class="card-text">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro, minima modi! Vitae eos magni sapiente perspiciatis, velit dolores dicta sunt. Perferendis quod voluptatibus nemo iste.
+                  Дякую @amber.puffy за чудовий пледик☺️. Тепер мої зимові вечори будуть ще теплішими та приємнішими.Якість👍.Щиро рекомендую❤️
                 </p>
               </div>
             </div>
@@ -204,9 +254,9 @@
             <div class="card w-100">
               <div class="card-body text-center image-card">
                 <img class="w-25 rounded-circle mb-3" src="./images/people/person3.jpg" alt="Card image">
-                <h3 class="card-title font-weight-light">Title</h3>
+                <h3 class="card-title font-weight-light">Дмитро</h3>
                 <p class="card-text">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro, minima modi! Vitae eos magni sapiente perspiciatis, velit dolores dicta sunt. Perferendis quod voluptatibus nemo iste.
+                  Замовляв плед у подарунок. Обрав власний розмір та колір. Сплели та відправили швидко. Гарне упакування! Рекомендую👍
                 </p>
               </div>
             </div>
@@ -214,10 +264,10 @@
           <div class="col-lg-3 col-lg-6 col-sm-12 mt-5 mb-3">
             <div class="card w-100">
               <div class="card-body text-center image-card">
-                <img class="w-25 rounded-circle mb-3" src="./images/people/person4.jpg" alt="Card image">
-                <h3 class="card-title font-weight-light">Title</h3>
+                <img class="w-25 rounded-circle mb-3" src="./images/people/person1.jpg" alt="Card image">
+                <h3 class="card-title font-weight-light">Наталія</h3>
                 <p class="card-text">
-                  Lorem ipsum, dolor sit amet consectetur adipisicing elit. Porro, minima modi! Vitae eos magni sapiente perspiciatis, velit dolores dicta sunt. Perferendis quod voluptatibus nemo iste.
+                  Доброго дня! Посилочку вчора забрала.Дякуємо Вам за пледик дуже м'якенький та приємний до тіла. Буду Вас рекомендувати❤️    
                 </p>
               </div>
             </div>
@@ -246,15 +296,18 @@
 
               </select>
             </div>
+            <div class="my-2 my-sm-3 my-md-4" style="font-size: 1.2rem;">
+              Колір: <span id="colorName"></span>
+            </div>
             <div class="form-group mb-0">
               <label for="colorSelector">Оберіть колір</label>
               <div id = "colors" class="colors-block">
 
               </div>
             </div>
-              <div class="text-right my-2 my-sm-3 my-md-4 text-right" style="font-size: 1.2rem;">
-                Ціна: <span id="orderPrice"></span> гривень
-              </div>
+            <div class="text-right my-2 my-sm-3 my-md-4 text-right" style="font-size: 1.2rem;">
+              Ціна: <span id="orderPrice"></span> гривень
+            </div>
             <button 
               class="btn btn-block btn-warning"
               type="submit"
@@ -296,7 +349,7 @@
           <input 
             type="text" 
             class="form-group form-control mb-0" 
-            placeholder="телефон 05000033322"
+            placeholder="телефон +(380)502033322"
             id="questionContact"
           >
           <small class="text-muted">Ви також можете нам написати за посиланнями нижче</small>
@@ -329,6 +382,12 @@
               &nbsp
               Telegram
             </a>
+          </div>
+        </div>
+        <hr>
+        <div class="row">
+          <div class="col-12 text-center text-light py-1">
+            Created by Uryn Dmytro telegram@tedi4t
           </div>
         </div>
       </div>

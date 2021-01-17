@@ -1,26 +1,31 @@
 const fs = require('fs');
 const axios = require('axios');
-const colors = require('./colors.json');
+const colorsHEX = require('./colorsHEX.json');
+const colorsText = require('./colorsText.json');
 
 const selector = document.getElementById('sizeSelector');
 const orderPriceElement = document.getElementById('orderPrice');
 const selectedPicture = document.getElementById('selectedPicture');
+const colorTextElement = document.getElementById('colorName');
 
 const sizes = [
-  '60x70', '75x80', '70x85', '80x80', '80x100', '90x90', 
-  '100x100', '110x110', '100x120', '120x120', '120x140', 
-  '150x150', '150x200', '180x200', '200x200', '200x220'
-];
+  "80x80", "90x90", "100x100", "110x110", "100x120",
+  "120x120", "130x150", "150x150", "150x200",
+  "180x200", "200x200", "220x220", "220x240",]
+
 
 const price = [
-  350, 390, 390, 420, 490, 490, 540, 600, 600, 
-  700, 800, 1200, 1400, 1700, 1900, 2200
+  480, 535, 630, 730, 730, 880, 1480,
+  1680, 1980, 2180, 2480, 2780, 2980
 ];
 
+const firstKey = Object.keys(colorsText)[0];
 let selectedSizeInd = 0;
 let selectedColor;
 let orderPrice = price[selectedSizeInd];
+let selectedColorText = colorsText[selectedColor];
 orderPriceElement.innerHTML = orderPrice;
+colorTextElement.innerHTML = colorsText[firstKey];
 
 // CODE FOR GALLARY BY PICTURES IN FOLDER
 
@@ -83,7 +88,7 @@ function generateColorItemHTML(fileName, color, index) {
 const colorsElement = document.getElementById('colors');
 const orderPictures = fs.readdirSync('./images/orderPictures');
 selectedColor = orderPictures[0];
-const colorsHTML = orderPictures.map((file, index) => generateColorItemHTML(file, colors[file], index)).join('\n');
+const colorsHTML = orderPictures.map((file, index) => generateColorItemHTML(file, colorsHEX[file], index)).join('\n');
 colorsElement.innerHTML = colorsHTML;
 
 // ADD EVENT LISTENERS FOR COLOR ELEMETNS
@@ -98,6 +103,9 @@ function handleColorElementClick(fileName, element) {
 
   prevActiveColor = element;
   selectedColor = fileName;
+
+  selectedColorText = colorsText[fileName];
+  colorTextElement.innerHTML = selectedColorText || colorsText[firstKey];
 
   if (selectImages.includes(fileName)) {
     selectedPicture.src = defaultSelectedPictureSource + fileName;
@@ -128,6 +136,8 @@ orderForm.onsubmit = e => {
 const defaultSelectedPictureSource = './images/orderPictures/';
 const selectImages = fs.readdirSync('./images/orderPictures');
 selectedPicture.src = defaultSelectedPictureSource + selectImages[0];
+const firstImageName = selectImages[0];
+colorTextElement.innerHTML = colorsText[firstImageName];
 
 // HANDLE QUESTION FORM
 const questionForm = document.getElementById('questionForm');

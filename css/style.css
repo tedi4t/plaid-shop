@@ -2,6 +2,14 @@
   height: 60vh;
 }
 
+.small-devices-image {
+  height: 60vh;
+  background: no-repeat url("../images/smallDeviceImages/1.jpg");
+  background-position: top;
+  background-size: cover;
+  background-attachment: scroll;
+}
+
 .biggerSize {
   font-size: 1.5rem;
 }
@@ -44,13 +52,17 @@ footer {
   color: #fff;
 }
 
+#carousel1, #carousel2, #carousel3 {
+  background-size: cover;
+  background-position: center center;
+}
+
 #carousel1 {
   background: no-repeat url("../images/carousel/1.jpg");
 }
 
 #carousel2 {
   background: no-repeat url("../images/carousel/2.jpg");
-  background-size: cover;
 }
 
 #carousel3 {

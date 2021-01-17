@@ -36,29 +36,71 @@ module.exports={
   "98.jpg": "#c299b7"
 }
 },{}],2:[function(require,module,exports){
+module.exports={   
+    "13.jpg": "13 — світло-жовтий",
+    "15.jpg": "15 — світло-зелений",
+    "16.jpg": "16 — голубий",
+    "19.jpg": "19 — світло-бірюзовий",
+    "27.jpg": "27 — світлий бузок",
+    "28.jpg": "28 — роза",
+    "41.jpg": "41 — фісташковий",
+    "60.jpg": "60 — чорний",
+    "62.jpg": "62 — світло-молочний",
+    "87.jpg": "87 — вуглево-сірий",
+    "111.jpg": "111 — сливовий",
+    "141.jpg": "141 — васильок",
+    "146.jpg": "146 — лаванда",
+    "179.jpg": "179 — бежевий меланж",
+    "183.jpg": "183 — світло-блакитний",
+    "216.jpg": "216 — жовтий",
+    "262.jpg": "262 — бежевий",
+    "289.jpg": "289 — блакитний",
+    "360.jpg": "360 — королівський синій",
+    "374.jpg": "374 — сіро-блакитний",
+    "416.jpg": "416 — сірий",
+    "428.jpg": "428 — середньо-сірий",
+    "485.jpg": "485 — зелений",
+    "490.jpg": "490 — світло-бірюзовий",
+    "509.jpg": "509 — жовтий",
+    "535.jpg": "535 — коаловий",
+    "619.jpg": "619 — кораловий",
+    "646.jpg": "646 — петроль",
+    "55.jpg": "55 — білий",
+    "149.jpg": "149 — фуксія",
+    "529.jpg": "529 — персиковий",
+    "340.jpg": "340 — пудра",
+    "56.jpg": "56 — червоний",
+    "98.jpg": "98 — суха троянда"
+  }
+},{}],3:[function(require,module,exports){
 
 const axios = require('axios');
-const colors = require('./colors.json');
+const colorsHEX = require('./colorsHEX.json');
+const colorsText = require('./colorsText.json');
 
 const selector = document.getElementById('sizeSelector');
 const orderPriceElement = document.getElementById('orderPrice');
 const selectedPicture = document.getElementById('selectedPicture');
+const colorTextElement = document.getElementById('colorName');
 
 const sizes = [
-  '60x70', '75x80', '70x85', '80x80', '80x100', '90x90', 
-  '100x100', '110x110', '100x120', '120x120', '120x140', 
-  '150x150', '150x200', '180x200', '200x200', '200x220'
-];
+  "80x80", "90x90", "100x100", "110x110", "100x120",
+  "120x120", "130x150", "150x150", "150x200",
+  "180x200", "200x200", "220x220", "220x240",]
+
 
 const price = [
-  350, 390, 390, 420, 490, 490, 540, 600, 600, 
-  700, 800, 1200, 1400, 1700, 1900, 2200
+  480, 535, 630, 730, 730, 880, 1480,
+  1680, 1980, 2180, 2480, 2780, 2980
 ];
 
+const firstKey = Object.keys(colorsText)[0];
 let selectedSizeInd = 0;
 let selectedColor;
 let orderPrice = price[selectedSizeInd];
+let selectedColorText = colorsText[selectedColor];
 orderPriceElement.innerHTML = orderPrice;
+colorTextElement.innerHTML = colorsText[firstKey];
 
 // CODE FOR GALLARY BY PICTURES IN FOLDER
 
@@ -121,7 +163,7 @@ function generateColorItemHTML(fileName, color, index) {
 const colorsElement = document.getElementById('colors');
 const orderPictures = ["111.jpg","13.jpg","141.jpg","146.jpg","149.jpg","15.jpg","16.jpg","179.jpg","183.jpg","19.jpg","216.jpg","262.jpg","27.jpg","28.jpg","289.jpg","340.jpg","360.jpg","374.jpg","41.jpg","416.jpg","428.jpg","485.jpg","490.jpg","509.jpg","529.jpg","535.jpg","55.jpg","56.jpg","60.jpg","619.jpg","62.jpg","646.jpg","87.jpg","98.jpg"];
 selectedColor = orderPictures[0];
-const colorsHTML = orderPictures.map((file, index) => generateColorItemHTML(file, colors[file], index)).join('\n');
+const colorsHTML = orderPictures.map((file, index) => generateColorItemHTML(file, colorsHEX[file], index)).join('\n');
 colorsElement.innerHTML = colorsHTML;
 
 // ADD EVENT LISTENERS FOR COLOR ELEMETNS
@@ -136,6 +178,9 @@ function handleColorElementClick(fileName, element) {
 
   prevActiveColor = element;
   selectedColor = fileName;
+
+  selectedColorText = colorsText[fileName];
+  colorTextElement.innerHTML = selectedColorText || colorsText[firstKey];
 
   if (selectImages.includes(fileName)) {
     selectedPicture.src = defaultSelectedPictureSource + fileName;
@@ -166,6 +211,8 @@ orderForm.onsubmit = e => {
 const defaultSelectedPictureSource = './images/orderPictures/';
 const selectImages = ["111.jpg","13.jpg","141.jpg","146.jpg","149.jpg","15.jpg","16.jpg","179.jpg","183.jpg","19.jpg","216.jpg","262.jpg","27.jpg","28.jpg","289.jpg","340.jpg","360.jpg","374.jpg","41.jpg","416.jpg","428.jpg","485.jpg","490.jpg","509.jpg","529.jpg","535.jpg","55.jpg","56.jpg","60.jpg","619.jpg","62.jpg","646.jpg","87.jpg","98.jpg"];
 selectedPicture.src = defaultSelectedPictureSource + selectImages[0];
+const firstImageName = selectImages[0];
+colorTextElement.innerHTML = colorsText[firstImageName];
 
 // HANDLE QUESTION FORM
 const questionForm = document.getElementById('questionForm');
@@ -180,9 +227,9 @@ questionForm.onsubmit = e => {
   e.preventDefault();
   console.log({ questionTextValue, questionContactValue });
 }
-},{"./colors.json":1,"axios":3}],3:[function(require,module,exports){
+},{"./colorsHEX.json":1,"./colorsText.json":2,"axios":4}],4:[function(require,module,exports){
 module.exports = require('./lib/axios');
-},{"./lib/axios":5}],4:[function(require,module,exports){
+},{"./lib/axios":6}],5:[function(require,module,exports){
 'use strict';
 
 var utils = require('./../utils');
@@ -363,7 +410,7 @@ module.exports = function xhrAdapter(config) {
   });
 };
 
-},{"../core/buildFullPath":11,"../core/createError":12,"./../core/settle":16,"./../helpers/buildURL":20,"./../helpers/cookies":22,"./../helpers/isURLSameOrigin":25,"./../helpers/parseHeaders":27,"./../utils":29}],5:[function(require,module,exports){
+},{"../core/buildFullPath":12,"../core/createError":13,"./../core/settle":17,"./../helpers/buildURL":21,"./../helpers/cookies":23,"./../helpers/isURLSameOrigin":26,"./../helpers/parseHeaders":28,"./../utils":30}],6:[function(require,module,exports){
 'use strict';
 
 var utils = require('./utils');
@@ -421,7 +468,7 @@ module.exports = axios;
 // Allow use of default import syntax in TypeScript
 module.exports.default = axios;
 
-},{"./cancel/Cancel":6,"./cancel/CancelToken":7,"./cancel/isCancel":8,"./core/Axios":9,"./core/mergeConfig":15,"./defaults":18,"./helpers/bind":19,"./helpers/isAxiosError":24,"./helpers/spread":28,"./utils":29}],6:[function(require,module,exports){
+},{"./cancel/Cancel":7,"./cancel/CancelToken":8,"./cancel/isCancel":9,"./core/Axios":10,"./core/mergeConfig":16,"./defaults":19,"./helpers/bind":20,"./helpers/isAxiosError":25,"./helpers/spread":29,"./utils":30}],7:[function(require,module,exports){
 'use strict';
 
 /**
@@ -442,7 +489,7 @@ Cancel.prototype.__CANCEL__ = true;
 
 module.exports = Cancel;
 
-},{}],7:[function(require,module,exports){
+},{}],8:[function(require,module,exports){
 'use strict';
 
 var Cancel = require('./Cancel');
@@ -501,14 +548,14 @@ CancelToken.source = function source() {
 
 module.exports = CancelToken;
 
-},{"./Cancel":6}],8:[function(require,module,exports){
+},{"./Cancel":7}],9:[function(require,module,exports){
 'use strict';
 
 module.exports = function isCancel(value) {
   return !!(value && value.__CANCEL__);
 };
 
-},{}],9:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 'use strict';
 
 var utils = require('./../utils');
@@ -605,7 +652,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 
 module.exports = Axios;
 
-},{"../helpers/buildURL":20,"./../utils":29,"./InterceptorManager":10,"./dispatchRequest":13,"./mergeConfig":15}],10:[function(require,module,exports){
+},{"../helpers/buildURL":21,"./../utils":30,"./InterceptorManager":11,"./dispatchRequest":14,"./mergeConfig":16}],11:[function(require,module,exports){
 'use strict';
 
 var utils = require('./../utils');
@@ -659,7 +706,7 @@ InterceptorManager.prototype.forEach = function forEach(fn) {
 
 module.exports = InterceptorManager;
 
-},{"./../utils":29}],11:[function(require,module,exports){
+},{"./../utils":30}],12:[function(require,module,exports){
 'use strict';
 
 var isAbsoluteURL = require('../helpers/isAbsoluteURL');
@@ -681,7 +728,7 @@ module.exports = function buildFullPath(baseURL, requestedURL) {
   return requestedURL;
 };
 
-},{"../helpers/combineURLs":21,"../helpers/isAbsoluteURL":23}],12:[function(require,module,exports){
+},{"../helpers/combineURLs":22,"../helpers/isAbsoluteURL":24}],13:[function(require,module,exports){
 'use strict';
 
 var enhanceError = require('./enhanceError');
@@ -701,7 +748,7 @@ module.exports = function createError(message, config, code, request, response) 
   return enhanceError(error, config, code, request, response);
 };
 
-},{"./enhanceError":14}],13:[function(require,module,exports){
+},{"./enhanceError":15}],14:[function(require,module,exports){
 'use strict';
 
 var utils = require('./../utils');
@@ -782,7 +829,7 @@ module.exports = function dispatchRequest(config) {
   });
 };
 
-},{"../cancel/isCancel":8,"../defaults":18,"./../utils":29,"./transformData":17}],14:[function(require,module,exports){
+},{"../cancel/isCancel":9,"../defaults":19,"./../utils":30,"./transformData":18}],15:[function(require,module,exports){
 'use strict';
 
 /**
@@ -826,7 +873,7 @@ module.exports = function enhanceError(error, config, code, request, response) {
   return error;
 };
 
-},{}],15:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 'use strict';
 
 var utils = require('../utils');
@@ -915,7 +962,7 @@ module.exports = function mergeConfig(config1, config2) {
   return config;
 };
 
-},{"../utils":29}],16:[function(require,module,exports){
+},{"../utils":30}],17:[function(require,module,exports){
 'use strict';
 
 var createError = require('./createError');
@@ -942,7 +989,7 @@ module.exports = function settle(resolve, reject, response) {
   }
 };
 
-},{"./createError":12}],17:[function(require,module,exports){
+},{"./createError":13}],18:[function(require,module,exports){
 'use strict';
 
 var utils = require('./../utils');
@@ -964,7 +1011,7 @@ module.exports = function transformData(data, headers, fns) {
   return data;
 };
 
-},{"./../utils":29}],18:[function(require,module,exports){
+},{"./../utils":30}],19:[function(require,module,exports){
 (function (process){(function (){
 'use strict';
 
@@ -1066,7 +1113,7 @@ utils.forEach(['post', 'put', 'patch'], function forEachMethodWithData(method) {
 module.exports = defaults;
 
 }).call(this)}).call(this,require('_process'))
-},{"./adapters/http":4,"./adapters/xhr":4,"./helpers/normalizeHeaderName":26,"./utils":29,"_process":30}],19:[function(require,module,exports){
+},{"./adapters/http":5,"./adapters/xhr":5,"./helpers/normalizeHeaderName":27,"./utils":30,"_process":31}],20:[function(require,module,exports){
 'use strict';
 
 module.exports = function bind(fn, thisArg) {
@@ -1079,7 +1126,7 @@ module.exports = function bind(fn, thisArg) {
   };
 };
 
-},{}],20:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 'use strict';
 
 var utils = require('./../utils');
@@ -1151,7 +1198,7 @@ module.exports = function buildURL(url, params, paramsSerializer) {
   return url;
 };
 
-},{"./../utils":29}],21:[function(require,module,exports){
+},{"./../utils":30}],22:[function(require,module,exports){
 'use strict';
 
 /**
@@ -1167,7 +1214,7 @@ module.exports = function combineURLs(baseURL, relativeURL) {
     : baseURL;
 };
 
-},{}],22:[function(require,module,exports){
+},{}],23:[function(require,module,exports){
 'use strict';
 
 var utils = require('./../utils');
@@ -1222,7 +1269,7 @@ module.exports = (
     })()
 );
 
-},{"./../utils":29}],23:[function(require,module,exports){
+},{"./../utils":30}],24:[function(require,module,exports){
 'use strict';
 
 /**
@@ -1238,7 +1285,7 @@ module.exports = function isAbsoluteURL(url) {
   return /^([a-z][a-z\d\+\-\.]*:)?\/\//i.test(url);
 };
 
-},{}],24:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 'use strict';
 
 /**
@@ -1251,7 +1298,7 @@ module.exports = function isAxiosError(payload) {
   return (typeof payload === 'object') && (payload.isAxiosError === true);
 };
 
-},{}],25:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 'use strict';
 
 var utils = require('./../utils');
@@ -1321,7 +1368,7 @@ module.exports = (
     })()
 );
 
-},{"./../utils":29}],26:[function(require,module,exports){
+},{"./../utils":30}],27:[function(require,module,exports){
 'use strict';
 
 var utils = require('../utils');
@@ -1335,7 +1382,7 @@ module.exports = function normalizeHeaderName(headers, normalizedName) {
   });
 };
 
-},{"../utils":29}],27:[function(require,module,exports){
+},{"../utils":30}],28:[function(require,module,exports){
 'use strict';
 
 var utils = require('./../utils');
@@ -1390,7 +1437,7 @@ module.exports = function parseHeaders(headers) {
   return parsed;
 };
 
-},{"./../utils":29}],28:[function(require,module,exports){
+},{"./../utils":30}],29:[function(require,module,exports){
 'use strict';
 
 /**
@@ -1419,7 +1466,7 @@ module.exports = function spread(callback) {
   };
 };
 
-},{}],29:[function(require,module,exports){
+},{}],30:[function(require,module,exports){
 'use strict';
 
 var bind = require('./helpers/bind');
@@ -1772,7 +1819,7 @@ module.exports = {
   stripBOM: stripBOM
 };
 
-},{"./helpers/bind":19}],30:[function(require,module,exports){
+},{"./helpers/bind":20}],31:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -1958,4 +2005,4 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}]},{},[2]);
+},{}]},{},[3]);
