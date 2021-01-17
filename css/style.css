@@ -1,3 +1,7 @@
+body {
+  position: relative;
+}
+
 .carousel-item {
   height: 60vh;
 }
@@ -45,6 +49,32 @@
 
 footer {
   box-shadow: inset 0px 0px 3px rgba(0, 0, 0, 0.5);
+}
+
+#contact-buttons {
+  z-index: 10;
+  position: fixed;
+  bottom: 0;
+  right: 0;
+}
+
+.fa-facebook-f, .fa-instagram, .fa-telegram-plane {
+  color: #fff;
+}
+
+.fa-circle-custom {
+  background: #3292a6;
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  display: grid;
+  text-align: center;
+  padding: 9px 0px;
+}
+
+.fa-bg-white {
+  background: #fff;
+  border-radius: 50%;
 }
 
 #responses .card:hover {

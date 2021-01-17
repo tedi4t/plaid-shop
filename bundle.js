@@ -115,7 +115,7 @@ function generateGalleryItemHTML(fileName, index, lastElement) {
   `
 }
 
-const galleryImages = ["1.jpg","2.jpg","3.jpg","4.jpg","IMG_3250.jpg","IMG_3254.jpg"];
+const galleryImages = ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"];
 
 const imagesHTML = galleryImages.map((file, index) => generateGalleryItemHTML(file, index, galleryImages.length === index + 1)).join('\n');
 gallery.innerHTML = imagesHTML;
