@@ -214,18 +214,33 @@ orderPictures.forEach((fileName, index) => {
 const orderForm = document.getElementById('orderForm');
 orderForm.onsubmit = e => {
   e.preventDefault();
-  console.log({ selectedColor, selectedSizeInd, orderPrice });
-
-  // f31da370-0a45-4321-9562-b4895f5bbcd3
+  const color = colorsText[selectedColor];
+  const size = sizes[selectedSizeInd];
 
   const props = {
-    color: colorsText[selectedColor],
-    size: sizes[selectedSizeInd],
+    color: color,
+    size: size,
     price: orderPrice
   };
   axios('https://plaid-shop-api.herokuapp.com/order/add' + queryCoder(props), {
     method: 'post'
   });
+
+  Swal.fire({
+    icon: 'success',
+    title: 'Дякуємо за замовлення!',
+    html: `
+    <div class = "text-left mt-1 mt-md-3" style = "line-height: 1.5;">
+      <div>В найближчий час з Вами зв'яжуться для уточнення замовлення.</div>
+      <hr>
+      <div>Колір: ${color}</div>
+      <div>Розмір: ${size}</div>
+      <div>Ціна: ${orderPrice} гривень</div>
+    </div>
+    `,
+  })
+
+
 }
 
 // IMAGE FROM FORM ORDER
@@ -246,7 +261,24 @@ questionContact.onchange = e => questionContactValue = e.target.value;
 
 questionForm.onsubmit = e => {
   e.preventDefault();
-  console.log({ questionTextValue, questionContactValue });
+
+  const props = {
+    question: questionTextValue,
+    contact: questionContactValue,
+  };
+  axios('https://plaid-shop-api.herokuapp.com/question/add' + queryCoder(props), {
+    method: 'post'
+  });
+
+  Swal.fire({
+    icon: 'success',
+    title: 'Дякуємо за запитання!',
+    html: `
+    <div class = "mt-1 mt-md-3" style = "line-height: 1.5;">
+      В найближчий час з Вами зв'яжуться для відповіді на запитання. Також ви можете зв'язатися з нами за посиланнями, які можете знайти нижче
+    </div>
+    `,
+  })
 }
 },{"./colorsHEX.json":1,"./colorsText.json":2,"axios":4}],4:[function(require,module,exports){
 module.exports = require('./lib/axios');
