@@ -57,7 +57,7 @@ gallery.innerHTML = imagesHTML;
 
 // CODE FOR SETTING SIZE SELECTOR OPTIONS
 function generateOptionHtml(index) {
-  return `<option value='${index}'>${sizes[index]}</option>`
+  return `<option value='${index}' ${index === 0 ? 'selected' : ''}>${sizes[index]}</option>`
 }
 
 const optionsHTML = 
@@ -72,6 +72,11 @@ selector.onchange = (e) => {
   orderPrice = price[selectedSizeInd];
   orderPriceElement.innerHTML = orderPrice;
 }
+
+// CODE FOR HANDLING ORDER PHONE CHANGE
+let phoneNumber;
+const phoneNumberElement = document.getElementById('phoneNumber');
+phoneNumberElement.onchange = e => phoneNumber = e.target.value;
 
 // CODE FOR SETTING COLORS
 // const defaultColorSource = './images/colors/';
@@ -136,36 +141,42 @@ orderPictures.forEach((fileName, index) => {
 })
 
 // HANDLE SUBMIT FORM
-const orderForm = document.getElementById('orderForm');
-orderForm.onsubmit = e => {
+const orderFormBlock = document.getElementById('orderFormBlock');
+orderFormBlock.onsubmit = e => {
   e.preventDefault();
   const color = colorsText[selectedColor];
   const size = sizes[selectedSizeInd];
-
   const props = {
     color: color,
     size: size,
-    price: orderPrice
+    price: orderPrice,
+    phone: phoneNumber
   };
+
+  // disable button while is processing
+  const orderForm = document.getElementById('orderForm');
+  const submitOrderBtn = document.getElementById('submitOrder');
+  submitOrderBtn.classList.add('disabled');
+
   axios('https://plaid-shop-api.herokuapp.com/order/add' + queryCoder(props), {
     method: 'post'
-  });
-
-  Swal.fire({
-    icon: 'success',
-    title: 'Дякуємо за замовлення!',
-    html: `
-    <div class = "text-left mt-1 mt-md-3" style = "line-height: 1.5;">
-      <div>В найближчий час з Вами зв'яжуться для уточнення замовлення.</div>
-      <hr>
-      <div>Колір: ${color}</div>
-      <div>Розмір: ${size}</div>
-      <div>Ціна: ${orderPrice} гривень</div>
-    </div>
-    `,
-  })
-
-
+  }).then(() => {
+      Swal.fire({
+      icon: 'success',
+      title: 'Дякуємо за замовлення!',
+      html: `
+      <div class = "text-left mt-1 mt-md-3" style = "line-height: 1.5;">
+        <div>В найближчий час з Вами зв'яжуться для уточнення замовлення.</div>
+        <hr>
+        <div>Колір: ${color}</div>
+        <div>Розмір: ${size}</div>
+        <div>Ціна: ${orderPrice} гривень</div>
+      </div>
+      `,
+    })
+    orderForm.reset();
+    submitOrderBtn.classList.remove('disabled');
+  }); 
 }
 
 // IMAGE FROM FORM ORDER
