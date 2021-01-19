@@ -13,7 +13,6 @@ const sizes = [
   "120x120", "130x150", "150x150", "150x200",
   "180x200", "200x200", "220x220", "220x240",]
 
-
 const price = [
   480, 535, 630, 730, 730, 880, 1480,
   1680, 1980, 2180, 2480, 2780, 2980
@@ -26,6 +25,17 @@ let orderPrice = price[selectedSizeInd];
 let selectedColorText = colorsText[selectedColor];
 orderPriceElement.innerHTML = orderPrice;
 colorTextElement.innerHTML = colorsText[firstKey];
+
+const queryCoder = (queryObj = {}) => {
+  let query = '?';
+  const options = [];
+  for (const key in queryObj) {
+    options.push(`${key}=${queryObj[key]}`);
+  }
+  query += options.join('&');
+  
+  return query;
+}
 
 // CODE FOR GALLARY BY PICTURES IN FOLDER
 
@@ -130,6 +140,17 @@ const orderForm = document.getElementById('orderForm');
 orderForm.onsubmit = e => {
   e.preventDefault();
   console.log({ selectedColor, selectedSizeInd, orderPrice });
+
+  // f31da370-0a45-4321-9562-b4895f5bbcd3
+
+  const props = {
+    color: colorsText[selectedColor],
+    size: sizes[selectedSizeInd],
+    price: orderPrice
+  };
+  axios('https://plaid-shop-api.herokuapp.com/order/add' + queryCoder(props), {
+    method: 'post'
+  });
 }
 
 // IMAGE FROM FORM ORDER
