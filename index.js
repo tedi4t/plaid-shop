@@ -157,6 +157,8 @@ orderFormBlock.onsubmit = e => {
   const orderForm = document.getElementById('orderForm');
   const submitOrderBtn = document.getElementById('submitOrder');
   submitOrderBtn.classList.add('disabled');
+  const submitOrderBtnHTML = submitOrderBtn.innerHTML;
+  submitOrderBtn.innerHTML = 'Оформлення...';
 
   axios('https://plaid-shop-api.herokuapp.com/order/add' + queryCoder(props), {
     method: 'post'
@@ -176,6 +178,7 @@ orderFormBlock.onsubmit = e => {
     })
     orderForm.reset();
     submitOrderBtn.classList.remove('disabled');
+    submitOrderBtn.innerHTML = submitOrderBtnHTML;
   }); 
 }
 
@@ -202,17 +205,27 @@ questionForm.onsubmit = e => {
     question: questionTextValue,
     contact: questionContactValue,
   };
+
+  // disable button while is processing
+  const submitQuestionBtn = document.getElementById('submitQuestion');
+  submitQuestionBtn.classList.add('disabled');
+  const submitQuestionBtnHTML = submitQuestionBtn.innerHTML;
+  submitQuestionBtn.innerHTML = 'Оформлення...';
+
   axios('https://plaid-shop-api.herokuapp.com/question/add' + queryCoder(props), {
     method: 'post'
-  });
-
-  Swal.fire({
-    icon: 'success',
-    title: 'Дякуємо за запитання!',
-    html: `
-    <div class = "mt-1 mt-md-3" style = "line-height: 1.5;">
-      В найближчий час з Вами зв'яжуться для відповіді на запитання. Також ви можете зв'язатися з нами за посиланнями, які можете знайти нижче
-    </div>
-    `,
+  }).then(() => {
+    Swal.fire({
+      icon: 'success',
+      title: 'Дякуємо за запитання!',
+      html: `
+      <div class = "mt-1 mt-md-3" style = "line-height: 1.5;">
+        В найближчий час з Вами зв'яжуться для відповіді на запитання. Також ви можете зв'язатися з нами за посиланнями, які можете знайти нижче
+      </div>
+      `,
+    });
+    questionForm.reset();
+    submitQuestionBtn.classList.remove('disabled');
+    submitQuestionBtn.innerHTML = submitQuestionBtnHTML;
   })
 }

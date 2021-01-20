@@ -8,7 +8,7 @@ body {
 
 .small-devices-image {
   height: 60vh;
-  background: no-repeat url("../images/smallDeviceImages/1.jpg");
+  background: no-repeat url("../images/smallDeviceImages/1.webp");
   background-position: top;
   background-size: cover;
   background-attachment: scroll;
@@ -88,27 +88,27 @@ footer {
 }
 
 #carousel1 {
-  background: no-repeat url("../images/carousel/1.jpg");
+  background: no-repeat url("../images/carousel/1.webp");
 }
 
 #carousel2 {
-  background: no-repeat url("../images/carousel/2.jpg");
+  background: no-repeat url("../images/carousel/2.webp");
 }
 
 #carousel3 {
-  background: no-repeat url("../images/carousel/3.jpg");
+  background: no-repeat url("../images/carousel/3.webp");
 }
 
 #section3 {
-  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), no-repeat center url("../images/background/1.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), no-repeat center url("../images/background/1.webp");
 }
 
 #section4 {
-  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), no-repeat center url("../images/background/2.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), no-repeat center url("../images/background/2.webp");
 }
 
 #section5 {
-  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), no-repeat center url("../images/background/3.jpg");
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), no-repeat center url("../images/background/3.webp");
 }
 
 #section3, #section4, #section5 {

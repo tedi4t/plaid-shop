@@ -125,7 +125,7 @@ function generateGalleryItemHTML(fileName, index, lastElement) {
   `
 }
 
-const galleryImages = ["1.jpg","2.jpg","3.jpg","4.jpg","5.jpg","6.jpg"];
+const galleryImages = ["1.webp","2.webp","3.webp","4.webp","5.webp","6.webp"];
 
 const imagesHTML = galleryImages.map((file, index) => generateGalleryItemHTML(file, index, galleryImages.length === index + 1)).join('\n');
 gallery.innerHTML = imagesHTML;
@@ -232,6 +232,8 @@ orderFormBlock.onsubmit = e => {
   const orderForm = document.getElementById('orderForm');
   const submitOrderBtn = document.getElementById('submitOrder');
   submitOrderBtn.classList.add('disabled');
+  const submitOrderBtnHTML = submitOrderBtn.innerHTML;
+  submitOrderBtn.innerHTML = 'Оформлення...';
 
   axios('https://plaid-shop-api.herokuapp.com/order/add' + queryCoder(props), {
     method: 'post'
@@ -251,6 +253,7 @@ orderFormBlock.onsubmit = e => {
     })
     orderForm.reset();
     submitOrderBtn.classList.remove('disabled');
+    submitOrderBtn.innerHTML = submitOrderBtnHTML;
   }); 
 }
 
@@ -277,18 +280,28 @@ questionForm.onsubmit = e => {
     question: questionTextValue,
     contact: questionContactValue,
   };
+
+  // disable button while is processing
+  const submitQuestionBtn = document.getElementById('submitQuestion');
+  submitQuestionBtn.classList.add('disabled');
+  const submitQuestionBtnHTML = submitQuestionBtn.innerHTML;
+  submitQuestionBtn.innerHTML = 'Оформлення...';
+
   axios('https://plaid-shop-api.herokuapp.com/question/add' + queryCoder(props), {
     method: 'post'
-  });
-
-  Swal.fire({
-    icon: 'success',
-    title: 'Дякуємо за запитання!',
-    html: `
-    <div class = "mt-1 mt-md-3" style = "line-height: 1.5;">
-      В найближчий час з Вами зв'яжуться для відповіді на запитання. Також ви можете зв'язатися з нами за посиланнями, які можете знайти нижче
-    </div>
-    `,
+  }).then(() => {
+    Swal.fire({
+      icon: 'success',
+      title: 'Дякуємо за запитання!',
+      html: `
+      <div class = "mt-1 mt-md-3" style = "line-height: 1.5;">
+        В найближчий час з Вами зв'яжуться для відповіді на запитання. Також ви можете зв'язатися з нами за посиланнями, які можете знайти нижче
+      </div>
+      `,
+    });
+    questionForm.reset();
+    submitQuestionBtn.classList.remove('disabled');
+    submitQuestionBtn.innerHTML = submitQuestionBtnHTML;
   })
 }
 },{"./colorsHEX.json":1,"./colorsText.json":2,"axios":4}],4:[function(require,module,exports){
