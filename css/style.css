@@ -127,6 +127,18 @@ footer {
     font-size: 1.2rem;
   }
 
+  #section3 {
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), no-repeat center url("../images/background/smaller/1.webp");
+  }
+
+  #section4 {
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), no-repeat center url("../images/background/smaller/2.webp");
+  }
+
+  #section5 {
+    background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), no-repeat center url("../images/background/smaller/3.webp");
+  }
+
   #section3, #section4, #section5 {
     background-attachment: scroll;
   }
