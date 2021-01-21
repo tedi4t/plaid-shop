@@ -142,44 +142,58 @@ orderPictures.forEach((fileName, index) => {
 
 // HANDLE SUBMIT FORM
 const orderFormBlock = document.getElementById('orderFormBlock');
+const errorOrder = document.getElementById('errorOrder');
+
 orderFormBlock.onsubmit = e => {
   e.preventDefault();
   const color = colorsText[selectedColor];
   const size = sizes[selectedSizeInd];
   const props = {
-    color: color,
-    size: size,
-    price: orderPrice,
-    phone: phoneNumber
+    color: color || '',
+    size: size || '',
+    price: orderPrice || 0,
+    phone: phoneNumber || ''
   };
 
-  // disable button while is processing
-  const orderForm = document.getElementById('orderForm');
-  const submitOrderBtn = document.getElementById('submitOrder');
-  submitOrderBtn.classList.add('disabled');
-  const submitOrderBtnHTML = submitOrderBtn.innerHTML;
-  submitOrderBtn.innerHTML = 'Оформлення...';
 
-  axios('https://plaid-shop-api.herokuapp.com/order/add' + queryCoder(props), {
-    method: 'post'
-  }).then(() => {
-      Swal.fire({
-      icon: 'success',
-      title: 'Дякуємо за замовлення!',
-      html: `
-      <div class = "text-left mt-1 mt-md-3" style = "line-height: 1.5;">
-        <div>В найближчий час з Вами зв'яжуться для уточнення замовлення.</div>
-        <hr>
-        <div>Колір: ${color}</div>
-        <div>Розмір: ${size}</div>
-        <div>Ціна: ${orderPrice} гривень</div>
-      </div>
-      `,
-    })
-    orderForm.reset();
-    submitOrderBtn.classList.remove('disabled');
-    submitOrderBtn.innerHTML = submitOrderBtnHTML;
-  }); 
+  const fieldIsEmpty = Object.values(props).some(val => val.length === 0)
+
+  if (fieldIsEmpty) {
+    errorOrder.innerHTML = `<div class = "text-danger font-weight-bold mb-2">Заповніть усі поля будь ласка</div>`
+  } else {
+    errorOrder.innerHTML = '';
+    // disable button while is processing
+    const orderForm = document.getElementById('orderForm');
+    const submitOrderBtn = document.getElementById('submitOrder');
+    submitOrderBtn.classList.add('disabled');
+    const submitOrderBtnHTML = submitOrderBtn.innerHTML;
+    submitOrderBtn.innerHTML = 'Оформлення...';
+
+    axios('https://plaid-shop-api.herokuapp.com/order/add' + queryCoder(props), {
+      method: 'post'
+    }).then(() => {
+        Swal.fire({
+        icon: 'success',
+        title: 'Дякуємо за замовлення!',
+        html: `
+        <div class = "text-left mt-1 mt-md-3" style = "line-height: 1.5;">
+          <div>В найближчий час з Вами зв'яжуться для уточнення замовлення.</div>
+          <hr>
+          <div>Колір: ${color}</div>
+          <div>Розмір: ${size}</div>
+          <div>Ціна: ${orderPrice} гривень</div>
+        </div>
+        `,
+      })
+      orderForm.reset();
+      submitOrderBtn.classList.remove('disabled');
+      submitOrderBtn.innerHTML = submitOrderBtnHTML;
+    }); 
+  }
+
+
+
+  
 }
 
 // IMAGE FROM FORM ORDER
@@ -193,6 +207,7 @@ colorTextElement.innerHTML = colorsText[firstImageName];
 const questionForm = document.getElementById('questionForm');
 const questionText = document.getElementById('questionText');
 const questionContact = document.getElementById('questionContact');
+const errorQuestion = document.getElementById('errorQuestion');
 let questionTextValue;
 let questionContactValue;
 questionText.onchange = e => questionTextValue = e.target.value;
@@ -202,30 +217,38 @@ questionForm.onsubmit = e => {
   e.preventDefault();
 
   const props = {
-    question: questionTextValue,
-    contact: questionContactValue,
+    question: questionTextValue || '',
+    contact: questionContactValue || '',
   };
+  const fieldIsEmpty = Object.values(props).some(val => val.length === 0)
 
-  // disable button while is processing
-  const submitQuestionBtn = document.getElementById('submitQuestion');
-  submitQuestionBtn.classList.add('disabled');
-  const submitQuestionBtnHTML = submitQuestionBtn.innerHTML;
-  submitQuestionBtn.innerHTML = 'Оформлення...';
+  if (fieldIsEmpty) {
+    errorQuestion.innerHTML = `<div class = "text-danger font-weight-bold mb-2">Заповніть усі поля будь ласка</div>`
+  } else {
+    errorQuestion.innerHTML = '';
+    // disable button while is processing
+    const submitQuestionBtn = document.getElementById('submitQuestion');
+    submitQuestionBtn.classList.add('disabled');
+    const submitQuestionBtnHTML = submitQuestionBtn.innerHTML;
+    submitQuestionBtn.innerHTML = 'Оформлення...';
 
-  axios('https://plaid-shop-api.herokuapp.com/question/add' + queryCoder(props), {
-    method: 'post'
-  }).then(() => {
-    Swal.fire({
-      icon: 'success',
-      title: 'Дякуємо за запитання!',
-      html: `
-      <div class = "mt-1 mt-md-3" style = "line-height: 1.5;">
-        В найближчий час з Вами зв'яжуться для відповіді на запитання. Також ви можете зв'язатися з нами за посиланнями, які можете знайти нижче
-      </div>
-      `,
-    });
-    questionForm.reset();
-    submitQuestionBtn.classList.remove('disabled');
-    submitQuestionBtn.innerHTML = submitQuestionBtnHTML;
-  })
+    axios('https://plaid-shop-api.herokuapp.com/question/add' + queryCoder(props), {
+      method: 'post'
+    }).then(() => {
+      Swal.fire({
+        icon: 'success',
+        title: 'Дякуємо за запитання!',
+        html: `
+        <div class = "mt-1 mt-md-3" style = "line-height: 1.5;">
+          В найближчий час з Вами зв'яжуться для відповіді на запитання. Також ви можете зв'язатися з нами за посиланнями, які можете знайти нижче
+        </div>
+        `,
+      });
+      questionForm.reset();
+      submitQuestionBtn.classList.remove('disabled');
+      submitQuestionBtn.innerHTML = submitQuestionBtnHTML;
+    })
+  }
+
+  
 }
