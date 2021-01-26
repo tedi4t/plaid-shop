@@ -128,7 +128,7 @@ footer {
 
 @media only screen and (max-width: 768px) {
   .display-4 {
-    font-size: 1.9rem;
+    font-size: 1.9rem !important;
     margin-bottom: 0;
   }
 
