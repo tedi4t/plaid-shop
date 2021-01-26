@@ -77,6 +77,15 @@ footer {
   border-radius: 50%;
 }
 
+.why-title {
+  font-weight: 300;
+  font-size: 2rem;
+}
+
+.why-text {
+  font-size: 1.2rem;
+}
+
 #responses .card:hover {
   background: #3292a6;
   color: #fff;
