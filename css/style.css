@@ -18,6 +18,10 @@ body {
   font-size: 1.5rem;
 }
 
+.navbar-text {
+  font-size: 1.2rem;
+}
+
 .img-fluid {
   object-fit: cover;
 }
@@ -86,6 +90,10 @@ footer {
   font-size: 1.2rem;
 }
 
+.why-image {
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.8);
+}
+
 #responses .card:hover {
   background: #3292a6;
   color: #fff;
@@ -134,6 +142,10 @@ footer {
 
   .biggerSize {
     font-size: 1.2rem;
+  }
+
+  .navbar-text {
+    font-size: 1rem;
   }
 
   #section3 {
