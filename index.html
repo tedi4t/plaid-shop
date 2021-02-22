@@ -253,6 +253,11 @@
                 Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni, fugiat!
               </p>
               <h5 class="text-primary font-weight-light text-center">535 гривень</h5>
+              <div class="w-100 text-center">
+                <a class="btn btn-primary px-4 mt-2 mt-sm-3" href="#orderFormBlock">
+                  Купити
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -262,9 +267,15 @@
             <div class="card-body">
               <h4 class="card-title text-center">Пінетки</h4>
               <p class="card-text text-justify">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nam voluptas libero, quasi corporis mollitia itaque.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut obcaecati libero facere autem debitis nostrum?
               </p>
               <h5 class="text-primary font-weight-light text-center">100 гривень</h5>
+              <div class="w-100 text-center">
+                <a class="btn btn-primary px-4 mt-2 mt-sm-3" href="#orderFormBlock">
+                  Купити
+                </a>
+              </div>
+              
             </div>
           </div>
         </div>
@@ -274,9 +285,14 @@
             <div class="card-body">
               <h4 class="card-title text-center">Плед 130x150</h4>
               <p class="card-text text-justify">
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Rerum quis voluptatem natus?
+                Lorem ipsum dolor sit amet consectetur adipisicing elit. Laborum illum sunt eveniet consequuntur?
               </p>
               <h5 class="text-primary font-weight-light text-center">1480 гривень</h5>
+              <div class="w-100 text-center">
+                <a class="btn btn-primary px-4 mt-2 mt-sm-3" href="#orderFormBlock">
+                  Купити
+                </a>
+              </div>
             </div>
           </div>
         </div>
@@ -371,16 +387,27 @@
           <div class="col-md-6 col-sm-12">
             <div id="errorOrder"></div>
             <div class="form-group">
+              <label for="typeSelector">Що бажаєте замовити?</label>
+              <select class="form-control" id="typeSelector">
+                <option value='1' selected>Плед</option>
+                <option value='2'>Пінетки</option>
+              </select>
+            </div>
+            <div class="form-group" id = "size-selector-group">
               <label for="sizeSelector">Оберіть розмір</label>
               <select class="form-control" id="sizeSelector">
 
               </select>
             </div>
+            <div class="form-group d-none" id = "size-pin-group">
+              <label for="sizePin">довжина ноги (см)</label>
+              <input class="form-control" id="sizePin" placeholder="Введіть довжину ноги">
+            </div>
             <div class="my-2 my-sm-3 my-md-4" style="font-size: 1.2rem;">
               Колір: <span id="colorName"></span>
             </div>
             <div class="form-group mb-0">
-              <label for="colorSelector">Оберіть колір</label>
+              <label for="colorSelector">Оберіть колір ниток</label>
               <div id = "colors" class="colors-block">
 
               </div>

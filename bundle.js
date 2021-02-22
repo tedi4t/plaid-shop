@@ -79,6 +79,8 @@ const colorsHEX = require('./colorsHEX.json');
 const colorsText = require('./colorsText.json');
 
 const selector = document.getElementById('sizeSelector');
+const orderTypeSelector = document.getElementById('typeSelector');
+const sizePin = document.getElementById('sizePin');
 const orderPriceElement = document.getElementById('orderPrice');
 const selectedPicture = document.getElementById('selectedPicture');
 const colorTextElement = document.getElementById('colorName');
@@ -93,9 +95,13 @@ const price = [
   1680, 1980, 2180, 2480, 2780, 2980
 ];
 
+const pinsPrice = 100;
+
 const firstKey = Object.keys(colorsText)[0];
 let selectedSizeInd = 0;
 let selectedColor;
+let orderType = 1;
+let legSize;
 let orderPrice = price[selectedSizeInd];
 let selectedColorText = colorsText[selectedColor];
 orderPriceElement.innerHTML = orderPrice;
@@ -131,6 +137,24 @@ const queryCoder = (queryObj = {}) => {
 // console.log(imagesHTML);
 // gallery.innerHTML = imagesHTML;
 
+// HANDLE CHANGE OF ORDER TYPE
+orderTypeSelector.onchange = (e) => {
+  orderType = Number(e.target.value);
+  if (orderType === 1) {
+    $('#size-pin-group').addClass("d-none");
+    $('#size-selector-group').removeClass("d-none");
+    //updating price
+    orderPrice = price[0];
+    orderPriceElement.innerHTML = orderPrice;
+  } else {
+    $('#size-selector-group').addClass("d-none");
+    $('#size-pin-group').removeClass("d-none");
+    //updating price
+    orderPrice = 100;
+    orderPriceElement.innerHTML = orderPrice;
+  }
+}
+
 // CODE FOR SETTING SIZE SELECTOR OPTIONS
 function generateOptionHtml(index) {
   return `<option value='${index}' ${index === 0 ? 'selected' : ''}>${sizes[index]}</option>`
@@ -147,6 +171,11 @@ selector.onchange = (e) => {
   //updating price
   orderPrice = price[selectedSizeInd];
   orderPriceElement.innerHTML = orderPrice;
+}
+
+// CODE FOR HANDLING SELECTOR OF PINS
+sizePin.onchange = (e) => {
+  legSize = e.target.value;
 }
 
 // CODE FOR HANDLING ORDER PHONE CHANGE
@@ -221,16 +250,17 @@ const orderFormBlock = document.getElementById('orderFormBlock');
 const errorOrder = document.getElementById('errorOrder');
 
 orderFormBlock.onsubmit = e => {
+  console.log('submitted!');
   e.preventDefault();
   const color = colorsText[selectedColor];
   const size = sizes[selectedSizeInd];
   const props = {
+    orderType: orderType === 1 ? 'Плед' : 'Пінетки',
     color: color || '',
-    size: size || '',
+    size: (orderType === 1) ? (size || '') : (legSize || ''),
     price: orderPrice || 0,
     phone: phoneNumber || ''
   };
-
 
   const fieldIsEmpty = Object.values(props).some(val => val.length === 0)
 
@@ -245,6 +275,8 @@ orderFormBlock.onsubmit = e => {
     const submitOrderBtnHTML = submitOrderBtn.innerHTML;
     submitOrderBtn.innerHTML = 'Оформлення...';
 
+    console.log(props);
+
     axios('https://plaid-shop-api.herokuapp.com/order/add' + queryCoder(props), {
       method: 'post'
     }).then(() => {
@@ -255,8 +287,9 @@ orderFormBlock.onsubmit = e => {
         <div class = "text-left mt-1 mt-md-3" style = "line-height: 1.5;">
           <div>В найближчий час з Вами зв'яжуться для уточнення замовлення.</div>
           <hr>
+          <div>Замовлено: ${orderType === 1 ? "Плед" : "Пінетки"}</div>
           <div>Колір: ${color}</div>
-          <div>Розмір: ${size}</div>
+          <div>Розмір: ${orderType === 1 ? size : legSize}</div>
           <div>Ціна: ${orderPrice} гривень</div>
         </div>
         `,
@@ -266,10 +299,6 @@ orderFormBlock.onsubmit = e => {
       submitOrderBtn.innerHTML = submitOrderBtnHTML;
     }); 
   }
-
-
-
-  
 }
 
 // IMAGE FROM FORM ORDER
@@ -325,8 +354,6 @@ questionForm.onsubmit = e => {
       submitQuestionBtn.innerHTML = submitQuestionBtnHTML;
     })
   }
-
-  
 }
 },{"./colorsHEX.json":1,"./colorsText.json":2,"axios":4}],4:[function(require,module,exports){
 module.exports = require('./lib/axios');
